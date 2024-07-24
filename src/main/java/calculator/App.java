@@ -44,10 +44,18 @@ public class App {
             } else {
                 System.out.println("결과: " + result);
 
-                /* 연산의 결과를 배열에 저장합니다. */
-                results[index] = result;
-                /* index를 증가 시킵니다. */
-                index++;
+                if (index == 10) {
+                    for (int i = 1; i < 10; i++) {
+                        results[i - 1] = results[i];
+                    }
+
+                    results[9] = result;
+                } else {
+                    /* 연산의 결과를 배열에 저장합니다. */
+                    results[index] = result;
+                    /* index를 증가 시킵니다. */
+                    index++;
+                }
             }
 
             System.out.println("더 계산하시겠습니까? (exit 입력 시 종료)");
