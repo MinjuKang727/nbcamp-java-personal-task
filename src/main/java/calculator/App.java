@@ -18,5 +18,23 @@ public class App {
         System.out.print("사칙연산 기호를 입력하세요: ");
         // 사칙연산 기호를 적합한 타입으로 선언한 변수에 저장합니다.
         char op = sc.next().charAt(0);
+
+        int result = 0;
+        /* 제어문을 활용하여 위 요구사항을 만족할 수 있게 구현합니다.*/
+        if (op == '+') {
+            result = n1 + n2;
+        } else if (op == '-') {
+            result = n1 - n2;
+        } else if (op == '*') {
+            result = n1 * n2;
+        } else if (op == '/' && n2 != 0) {
+            result = n1 / n2;
+        }
+
+        if (op == '/' && n2 == 0) {
+            System.out.println("나눗셈 연산에서 분모(두번째 정수)에 0이 입력될 수 없습니다.");
+        } else {
+            System.out.println("결과: " + result);
+        }
     }
 }
