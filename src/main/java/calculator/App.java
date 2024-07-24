@@ -1,13 +1,13 @@
 package calculator;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class App {
 
     public static void main(String[] args) {
         /* 연산의 결과를 저장할 수 있도록 적합한 타입의 배열을 생성합니다. */
-        int[] results = new int[10];
+        ArrayList<Integer> results = new ArrayList<Integer>();
         /* 연산의 결과가 저장된 배열의 마지막 index를 저장하는 변수를 선언 */
         int index = 0;
 
@@ -43,18 +43,15 @@ public class App {
                 System.out.println("나눗셈 연산에서 분모(두번째 정수)에 0이 입력될 수 없습니다.");
             } else {
                 System.out.println("결과: " + result);
+                results.add(result);
+                System.out.println(results);
+                /* 배열에서 컬렉션으로 변경됨으로써 변경해야하는 부분 구현 */
+                System.out.println("가장 먼저 저장된 연산 결과를 삭제하시겠습니까? (remove 입력 시 삭제)");
+                /* 위 요구사항에 맞게 구현 */
+                String remove = sc.next();
 
-                if (index == 10) {
-                    for (int i = 1; i < 10; i++) {
-                        results[i - 1] = results[i];
-                    }
-
-                    results[9] = result;
-                } else {
-                    /* 연산의 결과를 배열에 저장합니다. */
-                    results[index] = result;
-                    /* index를 증가 시킵니다. */
-                    index++;
+                if (remove.equals("remove")) {
+                    results.remove(0);
                 }
             }
 
