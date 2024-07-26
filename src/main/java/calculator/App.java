@@ -1,9 +1,15 @@
 package calculator;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class App {
     public static void main(String[] args) {
+        /* 연산의 결과를 저장할 수 있도록 적합한 타입의 배열을 생성합니다. */
+        float[] results = new float[10];
+        /* 연산의 결과가 저장된 배열의 마지막 index를 저장하는 변수를 선언 */
+        int index = -1;
+        float result = 0;
         Scanner sc = new Scanner(System.in);
         String exit = "";
 
@@ -22,36 +28,98 @@ public class App {
                 // 사칙연산 기호를 적합한 타입으로 선언한 변수에 저장합니다.
                 char op = sc.nextLine().charAt(0);
 
-                int result = 0;
-                float resultf = 0;
-
                 /* 제어문을 활용하여 위 요구사항을 만족할 수 있게 구현합니다.*/
                 switch (op) {
-                    case '+' :
+                    case '+':
                         result = n1 + n2;
+
                         System.out.println("결과: " + result);
+
+                        if (index == results.length - 1) {
+                            /* 현재 저장된 index가 가장 마지막이라면 배열의 결과값들을 한칸씩 앞으로 이동하여 저장 */
+                            for (int i = 0; i < results.length - 1; i++) {
+                                results[i] = results[i + 1];
+                            }
+
+                            /* 연산의 결과를 배열에 저장합니다. */
+                            results[index] = result;
+                        } else {
+                            /* 연산의 결과를 배열에 저장합니다. */
+                            results[index + 1] = result;
+                            /* index를 증가 시킵니다. */
+                            index++;
+                        }
+
                         break;
-                    case '-' :
+                    case '-':
                         result = n1 - n2;
+
                         System.out.println("결과: " + result);
+
+                        if (index == results.length - 1) {
+                            /* 현재 저장된 index가 가장 마지막이라면 배열의 결과값들을 한칸씩 앞으로 이동하여 저장 */
+                            for (int i = 0; i < results.length - 1; i++) {
+                                results[i] = results[i + 1];
+                            }
+
+                            /* 연산의 결과를 배열에 저장합니다. */
+                            results[index] = result;
+                        } else {
+                            /* 연산의 결과를 배열에 저장합니다. */
+                            results[index + 1] = result;
+                            /* index를 증가 시킵니다. */
+                            index++;
+                        }
+
                         break;
-                    case '*' :
+                    case '*':
                         result = n1 * n2;
+
                         System.out.println("결과: " + result);
+
+                        if (index == results.length - 1) {
+                            /* 현재 저장된 index가 가장 마지막이라면 배열의 결과값들을 한칸씩 앞으로 이동하여 저장 */
+                            for (int i = 0; i < results.length - 1; i++) {
+                                results[i] = results[i + 1];
+                            }
+
+                            /* 연산의 결과를 배열에 저장합니다. */
+                            results[index] = result;
+                        } else {
+                            /* 연산의 결과를 배열에 저장합니다. */
+                            results[index + 1] = result;
+                            /* index를 증가 시킵니다. */
+                            index++;
+                        }
+
                         break;
-                    case '/' :
+                    case '/':
                         if (n2 == 0) {
                             System.out.println("나눗셈 연산에서 분모(두번째 정수)에 0이 입력될 수 없습니다.");
                         } else {
-                            resultf = (float) n1 / n2;
-                            System.out.println("결과: " + resultf);
+                            result = (float) n1 / n2;
+
+                            System.out.println("결과: " + result);
+
+                            if (index == results.length - 1) {
+                                /* 현재 저장된 index가 가장 마지막이라면 배열의 결과값들을 한칸씩 앞으로 이동하여 저장 */
+                                for (int i = 0; i < results.length - 1; i++) {
+                                    results[i] = results[i + 1];
+                                }
+
+                                /* 연산의 결과를 배열에 저장합니다. */
+                                results[index] = result;
+                            } else {
+                                /* 연산의 결과를 배열에 저장합니다. */
+                                results[index + 1] = result;
+                                /* index를 증가 시킵니다. */
+                                index++;
+                            }
                         }
                         break;
-                    default :
+                    default:
                         System.out.println("알 수 없는 사칙연산 기호를 입력하셨습니다.");
                 }
-
-
             } catch (Exception e) {
                 System.out.println("알 수 없는 값을 입력하셨습니다.");
             }
