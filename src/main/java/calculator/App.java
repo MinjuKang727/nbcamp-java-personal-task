@@ -30,7 +30,7 @@ public class App {
                 switch (op) {
                     case '+':
                         result = n1 + n2;
-                        System.out.println("결과: " + result);
+                        System.out.println("결과: " + (int) result);
 
                         /* 연산의 결과를 ArrayList에 저장합니다. */
                         results.add(result);
@@ -38,7 +38,7 @@ public class App {
                         break;
                     case '-':
                         result = n1 - n2;
-                        System.out.println("결과: " + result);
+                        System.out.println("결과: " + (int) result);
 
                         /* 연산의 결과를 ArrayList에 저장합니다. */
                         results.add(result);
@@ -46,7 +46,7 @@ public class App {
                         break;
                     case '*':
                         result = n1 * n2;
-                        System.out.println("결과: " + result);
+                        System.out.println("결과: " + (int) result);
 
                         /* 연산의 결과를 ArrayList에 저장합니다. */
                         results.add(result);
@@ -76,7 +76,23 @@ public class App {
             String remove = sc.nextLine();
 
             if (remove.equals("remove")) {
-                results.remove(0);
+                if (results.isEmpty()) {
+                    System.out.println("저장된 연산 결과가 존재하지 않습니다.");
+                } else {
+                    results.remove(0);
+                }
+            }
+
+            System.out.println("저장된 연산결과를 조회하시겠습니까? (inquiry 입력 시 조회)");
+            /* 위 요구사항에 맞게 구현 */
+            String inquiry = sc.nextLine();
+
+            if (inquiry.equals("inquiry")) {
+                if (results.isEmpty()) {
+                    System.out.println("저장된 연산 결과가 존재하지 않습니다.");
+                } else {
+                    System.out.println("저장된 연산 결과 : " + results);
+                }
             }
 
             System.out.println("더 계산하시겠습니까? (exit 입력 시 종료)");
